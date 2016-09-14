@@ -7,7 +7,11 @@ center is "Center" and radius is "Radius"
 */
 int StaticPointToStaticCircle(Vector2D *pP, Vector2D *pCenter, float Radius)
 {
-	return 0;
+	if(Vector2DSquareDistance(pP, pCenter) > Radius*Radius)
+	{
+		return 0;
+	}
+	return 1;
 }
 
 
@@ -17,7 +21,12 @@ whose center is Rect, width is "Width" and height is Height
 */
 int StaticPointToStaticRect(Vector2D *pPos, Vector2D *pRect, float Width, float Height)
 {
-  return 0;
+	if (pPos->x < pRect->x - Width / 2 || pPos->x > pRect->x + Width / 2 || pPos->y < pRect->y - Height / 2 || pPos->y > pRect->y + Height / 2)
+	{
+		return 0;
+	}
+
+	return 1;
 }
 
 /*
@@ -27,7 +36,12 @@ Circle1: Center is Center1, radius is "Radius1"
 */
 int StaticCircleToStaticCircle(Vector2D *pCenter0, float Radius0, Vector2D *pCenter1, float Radius1)
 {
-  return 0;
+	if (Vector2DSquareDistance(pCenter0, pCenter1) > powf(Radius0 + Radius1, 2))
+	{
+		return 0;
+	}
+
+	return 1;
 }
 
 /*
@@ -37,5 +51,10 @@ Rectangle1: Center is pRect1, width is "Width1" and height is "Height1"
 */
 int StaticRectToStaticRect(Vector2D *pRect0, float Width0, float Height0, Vector2D *pRect1, float Width1, float Height1)
 {
-  return 0;
+	if (pRect0->x - Width0 / 2 > pRect1->x + Width1 / 2 || pRect1->x - Width1 / 2 > pRect0->x + Width0 / 2 || pRect0->y - Height0 / 2 > pRect1->y + Height1 / 2 || pRect1->y - Height1 / 2 > pRect0->y + Height0 / 2)
+	{
+		return 0;
+	}
+
+	return 1;
 }
