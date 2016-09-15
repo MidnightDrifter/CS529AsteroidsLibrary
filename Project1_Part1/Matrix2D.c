@@ -57,17 +57,21 @@ Result = Mtx0*Mtx1
 */
 void Matrix2DConcat(Matrix2D *pResult, Matrix2D *pMtx0, Matrix2D *pMtx1)
 {
-	Matrix2DZero(pResult);
+	Matrix2D t;
+	Matrix2DZero(&t);
 	for(int i=0;i<3;i++)
 	{
+		float sum = 0.f;
 		for (int j = 0; j < 3; j++)
 		{
 			for (int k = 0; k < 3; k++)
 			{
-				pResult->m[i][j] += pMtx0->m[i][k] * pMtx1->m[k][i];
+				t.m[i][j] += pMtx0->m[i][k] * pMtx1->m[k][j];
 			}
 		}
 	}
+
+	*pResult = t;
 }
 
 // ---------------------------------------------------------------------------
@@ -79,12 +83,12 @@ void Matrix2DTranslate(Matrix2D *pResult, float x, float y)
 {
 	pResult->m[0][0] = 1.f;
 	pResult->m[0][1] = 0.f;
-	pResult->m[0][2] = 0.f;
+	pResult->m[0][2] = x;
 	pResult->m[1][0] = 0.f;
 	pResult->m[1][1] = 1.f;
-	pResult->m[1][2] = 0.f;
-	pResult->m[2][0] = y;
-	pResult->m[2][1] = x;
+	pResult->m[1][2] = y;
+	pResult->m[2][0] = 0.f;
+	pResult->m[2][1] = 0.f;
 	pResult->m[2][2] = 1.f;
 }
 
@@ -105,7 +109,7 @@ void Matrix2DScale(Matrix2D *pResult, float x, float y)
 	pResult->m[2][0] = 0.f;
 	pResult->m[2][1] = 0.f;
 	pResult->m[2][2] = 1.f;
-}
+
 }
 
 // ---------------------------------------------------------------------------
@@ -117,7 +121,7 @@ Save the resultant matrix in Result
 void Matrix2DRotDeg(Matrix2D *pResult, float Angle)
 {
 
-	Matrix2DRotRad(pResult, Angle * M_PI/180.f)
+	Matrix2DRotRad(pResult, Angle * 3.14159265358979323846f / 180.f);
 
 }
 
@@ -129,11 +133,11 @@ Save the resultant matrix in Result
 */
 void Matrix2DRotRad(Matrix2D *pResult, float Angle)
 {
-	pResult->m[0][0] = cos(Angle);
-	pResult->m[0][1] = -1*sin(Angle);
-	pResult->m[0][2] = pResult->m[0][0];
-	pResult->m[1][0] = -1*pResult->m[0][1];
-	pResult->m[1][1] = 1;
+	pResult->m[0][0] = cosf(Angle);
+	pResult->m[0][1] = -1.f*sinf(Angle);
+	pResult->m[0][2] = 0.f;
+	pResult->m[1][0] = -1.f*pResult->m[0][1];
+	pResult->m[1][1] =  pResult->m[0][0];
 	pResult->m[1][2] = 0.f;
 	pResult->m[2][0] = 0.f;
 	pResult->m[2][1] = 0.f;
@@ -149,9 +153,9 @@ Result = Mtx * Vec
 */
 void Matrix2DMultVec(Vector2D *pResult, Matrix2D *pMtx, Vector2D *pVec)
 {
-	Vector2D t;
-	t.x = pMtx->m[0][0] * pVec->x + pMtx->m[0][1] * pVec->y;
-	t.y = pMtx->m[1][0] * pVec->x + pMtx->m[1][1] * pVec->y;
+	Vector2D t;  //Emulating homogenous coord of 1 at the end
+	t.x = pMtx->m[0][0] * pVec->x + pMtx->m[0][1] * pVec->y + pMtx->m[0][2];
+	t.y = pMtx->m[1][0] * pVec->x + pMtx->m[1][1] * pVec->y + pMtx->m[1][2];
 
 	*pResult = t;
 

@@ -102,7 +102,7 @@ float Vector2DDistance(Vector2D *pVec0, Vector2D *pVec1)
 
 float Vector2DSquareDistance(Vector2D *pVec0, Vector2D *pVec1)
 {
-	(powf((pVec0->x - pVec1->x), 2) + powf(pVec0->y - pVec1->y, 2));
+ return	(powf((pVec0->x - pVec1->x), 2) + powf(pVec0->y - pVec1->y, 2));
 
 }
 
@@ -124,8 +124,8 @@ void Vector2DFromAngleDeg(Vector2D *pResult, float angle)
 
 void Vector2DFromAngleRad(Vector2D *pResult, float angle)
 {
-	pResult->x = cos(angle);
-	pResult->y = sin(angle);
+	pResult->x = cosf(angle);
+	pResult->y = sinf(angle);
 }
 
 // ---------------------------------------------------------------------------
