@@ -1,3 +1,14 @@
+/* Start Header -------------------------------------------------------
+Copyright (C) 20xx DigiPen Institute of Technology. Reproduction or disclosure of this file or its contents without the prior written consent of DigiPen Institute of Technology is prohibited.
+File Name:  Vector2D.h
+Purpose:  Definition of basic vector functionality
+Language:  C
+Platform: Windows OS, VS2015 Express for Win. Desktop
+Project: sean.higgins CS529_Vector2D.h_1
+Author: Sean Higgins, sean.higgins
+Creation date: 9-14-2016
+- End Header --------------------------------------------------------*/
+
 #ifndef VECTOR2_H
 #define VECTOR2_H
 #include "math.h"

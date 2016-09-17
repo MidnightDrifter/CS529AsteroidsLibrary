@@ -1,3 +1,14 @@
+/* Start Header -------------------------------------------------------
+Copyright Matrix2D.c
+Purpose:  Implementation of basic matrix functionality
+Language:  C
+Platform: Windows OS, VS2015 Express for Win. Desktop
+Project: sean.higgins CS529_Matrix2D.c_1
+Author: Sean Higgins, sean.higgins
+Creation date: 9-14-2016
+- End Header --------------------------------------------------------*/
+
+
 #include "Matrix2D.h"
 
 

@@ -1,3 +1,13 @@
+/* Start Header -------------------------------------------------------
+Copyright Math2D.h
+Purpose:  Definition of basic math / collision functionality
+Language:  C
+Platform: Windows OS, VS2015 Express for Win. Desktop
+Project: sean.higgins CS529_Math2D.h_1
+Author: Sean Higgins, sean.higgins
+Creation date: 9-14-2016
+- End Header --------------------------------------------------------*/
+
 #ifndef MATH2D_H
 #define MATH2D_H
 

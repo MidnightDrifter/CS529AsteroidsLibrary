@@ -1,3 +1,15 @@
+/* Start Header -------------------------------------------------------
+Copyright (C) 20xx DigiPen Institute of Technology. Reproduction or disclosure of this file or its contents without the prior written consent of DigiPen Institute of Technology is prohibited.
+File Name:  Vector2D.c  
+Purpose:  Implementation of basic vector functionality 
+Language:  C
+Platform: Windows OS, VS2015 Express for Win. Desktop
+Project: sean.higgins CS529_Vector2D.c_1 
+Author: Sean Higgins, sean.higgins 
+Creation date: 9-14-2016
+- End Header --------------------------------------------------------*/
+
+
 #include "Vector2D.h"
 
 #define EPSILON 0.0001
